@@ -46,9 +46,53 @@ def linear_reg_normal(x, y):
     return y_pred
 
 
-y_pred_single = linear_reg_normal(x, y)
-y_pred_three = linear_reg_normal(x_three_features, y)
+# Create a linear regression model using gradient descent
+def linear_reg_gradient(x, y, learning_rate, iterations=5, m=0, b=0):
+    """
+    Computes predictions for linear regression using gradient descent
+    x: Python list of values of the feature (only supports single features for now)
+    y: Python list of actual values of target
+    learning rate: the value of the learning rate used for recalculating m and b
+    iterations: the number of iterations to train the model for
+    m: slope value
+    b: intercept value
+    returns NumPy array of predicted values of target
+    """
+     
+    # Instantiate y_pred and error and initialize iteration counter
+    y_pred = []
+    error = []
+    interation_coutner = 0
 
-print(y_pred_single)
-print("\n")
-print(y_pred_three)
+    while(interation_coutner < iterations):
+        # Clear predictions and errors
+        y_pred.clear()
+        error.clear()
+
+        # Initialize dm and db
+        dm = 0
+        db= 0
+        
+        for index, val_x in enumerate(x):
+            # Calculate y_pred
+            y_pred.append(m*x[index]+b)
+
+            # Calculate error
+            error.append(y[index] - y_pred[index])
+
+            # Calculate gradients
+            dm += 2/len(x) * x[index] * ((m*x[index]+b) - y[index])
+            db += 2/len(x) * ((m*x[index]+b) - y[index])
+
+            # For multiple features, the total dm values must be stored in a list since we will have an m value for each feature
+
+        # Update m and b
+        m = m - learning_rate * dm
+        b = b - learning_rate * db
+
+        # Update iteration counter
+        interation_coutner+=1
+
+    return np.array(y_pred)
+
+
