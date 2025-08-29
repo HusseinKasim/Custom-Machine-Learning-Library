@@ -22,7 +22,7 @@ def linear_reg_normal(x, y):
     # Create matrix of ones for the intercept
     X_ones = np.ones(len(x), dtype=int).reshape(-1,1)
     
-    # Reshape input data based if it is single or multiple features
+    # Reshape input data based on if it is single or multiple features
     if isinstance(x[0], list):
         X_x = np.array(x).reshape(len(x), len(x[0]))
     elif isinstance(x[0], int) or isinstance(x[0], float):
@@ -36,7 +36,7 @@ def linear_reg_normal(x, y):
     # Reshape target values array
     y_arr = np.array(y).reshape(-1,1)
 
-    # Calculate theta using Normal Equation inverse(XT . X) . XT . y (using the Moore-Penrose pseudoinverse function for robustness)
+    # Calculate theta using Normal Equation pseudoinverse(XT . X) . XT . y (using the Moore-Penrose pseudoinverse function for robustness)
     theta = np.dot(np.linalg.pinv(np.dot(X.T, X)), np.dot(X.T, y_arr))
 
     # Multiply X . theta to get predicted values
@@ -53,9 +53,9 @@ def linear_reg_gradient(x, y, learning_rate, iterations=5, m=0, b=0):
     x: Python list of values of the feature (only supports single features for now)
     y: Python list of actual values of target
     learning rate: the value of the learning rate used for recalculating m and b
-    iterations: the number of iterations to train the model for
-    m: slope value
-    b: intercept value
+    iterations: the number of iterations to train the model for (default value = 5)
+    m: slope value (default value = 0)
+    b: intercept value (default value = 0)
     returns NumPy array of predicted values of target
     """
      
