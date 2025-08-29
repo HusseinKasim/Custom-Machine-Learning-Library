@@ -79,11 +79,14 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
         # Initialize dm and db
         dm = 0
         db = 0
+
+        # Fill dm_list with zeros
+        for val in x[0]:
+                dm_list.append(0)
         
+        # Multiple features
         for index, _ in enumerate(x):
-            # Multiple features
             if isinstance(x[0], list):
-                '''  
                 # Initialize y_pred_temp
                 y_pred_temp = 0
 
@@ -98,9 +101,8 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
 
                 # Calculate gradient dm
                 for index2, _ in enumerate(x[index]):
-                    dm += 2/len(x) * x[index][index2] * (y_pred[index] - y[index])
-                dm_list.append(dm)
-                '''      
+                    dm_list[index2] += 2/len(x) * x[index][index2] * (y_pred[index] - y[index])  
+
             # Single feature
             elif isinstance(x[0], int) or isinstance(x[0], float):
                 # Calculate y_pred
@@ -136,4 +138,4 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
     return np.array(y_pred)
 
 
-print(linear_reg_gradient(x_two_features, y, 0.001, 1000, [0, 0], 0))
+print(linear_reg_gradient(x_two_features, y, 0.001, 100, [0, 0], 0))
