@@ -2,3 +2,4 @@ A small Python project made for fun that I will use to help me better understand
 
 Currently implemented:
 1. Linear Regression using Normal Equation (single and multiple features)
+2. Linear Regression using Gradient Descent (single features for now)
