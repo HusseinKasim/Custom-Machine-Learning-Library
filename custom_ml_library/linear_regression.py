@@ -55,7 +55,7 @@ def linear_reg_normal(x, y):
 def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
     """
     Computes predictions for linear regression using (batch) gradient descent
-    x: Python list of values of the feature (only supports single features for now)
+    x: Python list of lists representing the values of the feature
     y: Python list of actual values of target
     learning rate: the value of the learning rate used for recalculating m and b
     iterations: the number of iterations to train the model for
