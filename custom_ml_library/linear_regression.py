@@ -70,16 +70,15 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
     y_pred = []
     error = []
     dm_list = []
-    interation_coutner = 0
+    interation_counter = 0
 
-    while(interation_coutner < iterations):
+    while(interation_counter < iterations):
         # Clear predictions and errors
         y_pred.clear()
         error.clear()
         dm_list.clear()
         
-        # Initialize dm and db
-        dm = 0
+        # Initialize db
         db = 0
 
         # Fill dm_list with zeros
@@ -115,7 +114,7 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
         b = b - learning_rate * db
 
         # Update iteration counter
-        interation_coutner+=1
+        interation_counter+=1
 
     return np.array(y_pred)
 
