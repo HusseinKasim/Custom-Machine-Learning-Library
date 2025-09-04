@@ -69,21 +69,21 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
     # Instantiate y_pred and error and initialize iteration counter
     y_pred = []
     error = []
-    dm_list = []
+    grad_m_list = []
     interation_counter = 0
 
     while(interation_counter < iterations):
         # Clear predictions and errors
         y_pred.clear()
         error.clear()
-        dm_list.clear()
+        grad_m_list.clear()
         
         # Initialize db
         db = 0
 
-        # Fill dm_list with zeros
+        # Fill grad_m_list with zeros
         for val in x[0]:
-                dm_list.append(0)
+            grad_m_list.append(0)
         
         # Training loop
         for index, _ in enumerate(x):
@@ -101,17 +101,17 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
 
             # Calculate gradient dm
             for index2, _ in enumerate(x[index]):
-                dm_list[index2] += 2/len(x) * x[index][index2] * (y_pred[index] - y[index])  
+                grad_m_list[index2] += 2 * x[index][index2] * (y_pred[index] - y[index])  
             
             # Calculate gradient db
-            db += 2/len(x) * (y_pred[index] - y[index])
+            db += 2 * (y_pred[index] - y[index])
         
         # Update m
         for index, _ in enumerate(m):
-            m[index] = m[index] - learning_rate * dm_list[index]
+            m[index] = m[index] - (learning_rate * (grad_m_list[index]/len(x))) # Uses average gradient
         
         # Update b
-        b = b - learning_rate * db
+        b = b - (learning_rate * (db/len(x))) # Uses average gradient
 
         # Update iteration counter
         interation_counter+=1
