@@ -2,22 +2,14 @@ import numpy as np
 import math
 
 # Test data for development
-x = [[3],[4],[6],[8],[9]]
-x_two_features = [[1,2],
-                  [3,4],
-                  [5,6],
-                  [7,8],
-                  [9,10]]
-x_three_features = [[1, 4.55,35], 
-                  [1.32, 6.54,44.4], 
-                  [5.34, 8.79, 56.7], 
-                  [3.56, 10.2, 77.6], 
-                  [4,7.8, 67]
-                  ]
-y = [11.22, 10.65, 10.2, 12, 11]
+x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
+
+y_train = ['b', 'b', 'c', 'c', 'b']
+
+x = [[5, 250]]
 
 # Create k-Nearest Neighbors model
-def knn(x, y, mode):
+def knn(x_train, y_train, x, k, mode):
     """
     Computes predictions for linear regression using the Normal Equation.
     x: Python list of values of the feature (single or multiple features)
@@ -26,10 +18,28 @@ def knn(x, y, mode):
     returns NumPy array of predicted values of target
     """
     y_pred = 0 # Temp val
+    dist_temp = 0
+    dist = {}
+    sorted_dist = {}
 
     # Measure distance of input to all training points
+    for index, _ in enumerate(x_train):
+        dist_temp = math.sqrt(((x[0][0] - x_train[index][0]) ** 2) + ((x[0][1] - x_train[index][1]) ** 2))
+        dist[str(y_train[index])] = dist_temp
 
-    # Pick closest k to it 
+    # Sort dict by value
+    sorted_dist = dict(sorted(dist.items(), key=lambda y_train:y_train[1]))
+    print(sorted_dist)
+
+    # Pick closest k to it
+
 
     # Regression or Classification based on input
-    return y_pred
+    if(mode == 'classification'):
+      return y_pred
+    elif(mode == 'regression'):
+      return y_pred
+    else:
+      ValueError("Mode is incorrect!")
+
+print(knn(x_train, y_train, x, 3, 'classification'))
