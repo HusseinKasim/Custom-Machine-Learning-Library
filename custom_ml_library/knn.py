@@ -21,7 +21,6 @@ def knn(x_train, y_train, x, k, mode):
     mode: 'classification' or 'regression'
     returns value (regression) / class label (classification) of y_pred for the new point 
     """
-    y_pred = 0 # Temp val
     single_dist = 0
     dist_temp = ()
     dist = []
@@ -59,6 +58,7 @@ def knn_classification_helper(y_train, closest_k):
   returns the predicted class label for the new point
   """
   class_label_counters = {}
+
   # Initialize class labels dict
   for label in y_train:
     if label in class_label_counters.keys():
