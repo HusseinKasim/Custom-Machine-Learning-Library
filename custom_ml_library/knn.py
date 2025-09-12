@@ -6,7 +6,7 @@ x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
 
 y_train_regression = [10,20,30,40,50]
 
-y_train_classification = ['b','a','a','b','a']
+y_train_classification = ['b','a','c','b','d']
 
 x = [[5, 250]]
 
@@ -44,38 +44,45 @@ def knn(x_train, y_train, x, k, mode):
     
     # Regression or Classification based on input
     if(mode == 'classification'):
-      return knn_classification_helper(closest_k)
+      return knn_classification_helper(y_train, closest_k)
     elif(mode == 'regression'):
-     return knn_regression_helper(k, closest_k)
+     return knn_regression_helper(closest_k)
     else:
       ValueError("Mode is incorrect!")
 
 # Helper function for KNN classification
-def knn_classification_helper(closest_k):
-  class1_counter = 0
-  class2_counter = 0
-  class1 = closest_k[1][1]
-
-  # Count each class label
-  for val in closest_k:
-    if val[1] != class1:
-        class2 = val[1]
-        class2_counter+=1
-    else:
-        class1_counter+=1
-      
-  # Return majority
-  if class1_counter > class2_counter:
-    return class1
-  else:
-    return class2
+def knn_classification_helper(y_train, closest_k):
+  """
+  Predicts the class label for the new point
+  y_train: Target values of training data
+  closest_k: List of tuples of the closest k neighbors
+  returns the predicted class label for the new point
+  """
+  class_label_counters = {}
+  # Initialize class labels dict
+  for label in y_train:
+    if label in class_label_counters.keys():
+      continue
+    class_label_counters[label] = 0
   
-# Helper function for KNN regression
-def knn_regression_helper(k, closest_k):
-  sum = 0
+  # Fill class labels dict
   for val in closest_k:
-    sum += val[1]
-  y_pred = sum/k
+    if val[1] in class_label_counters.keys():
+      class_label_counters[val[1]]+=1
+  
+  return max(class_label_counters, key=class_label_counters.get)
+
+# Helper function for KNN regression
+def knn_regression_helper(closest_k):
+  """
+  Predicts the target value for the new point
+  closest_k: List of tuples of the closest k neighbors
+  returns the predicted target value for the new point
+  """
+  total = 0
+  for val in closest_k:
+    total += val[1]
+  y_pred = total/len(closest_k)
   return y_pred
 
 print(knn(x_train, y_train_regression, x, 3, 'regression'))
