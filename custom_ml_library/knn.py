@@ -10,7 +10,7 @@ y_train_classification = ['b','a','c','b','d']
 
 x = [[5, 250]]
 
-# Create k-Nearest Neighbors (KNN) model
+# Create a k-Nearest Neighbors (KNN) model
 def knn(x_train, y_train, x, k, mode):
     """
     Computes predictions for linear / BINARY classification problems using KNN
