@@ -50,8 +50,12 @@ def linear_reg_normal(x, y):
     # Return predicted y values as NumPy array
     return y_pred
 
-# Calculate Mean Squared Error function (Not implemented yet)
-# def mean_squared_error(y, y_pred, error)
+# Calculate Mean Squared Error function (Not fully implemented yet)
+def mean_squared_error(y, y_pred):
+    error = 0
+    for index, _ in enumerate(y):
+        error += (y[index] - y_pred[index]) ** 2
+    return error/len(y)
 
 # Create a linear regression model using (batch) gradient descent 
 def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
@@ -117,4 +121,5 @@ def linear_reg_gradient(x, y, learning_rate, iterations, m, b):
         interation_counter+=1
 
     return np.array(y_pred)
+
 

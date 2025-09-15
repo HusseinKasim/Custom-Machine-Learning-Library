@@ -23,8 +23,13 @@ def sigmoid(z):
     else:
         return (math.exp(z))/(1+math.exp(z))
 
-# Calculate Cross Entropy loss function (Not implemented yet)
-# def cross_entropy_loss(y, y_pred, loss)
+# Calculate Cross Entropy loss function (Not fully implemented yet)
+def cross_entropy_loss(y, y_pred_prob):
+    loss = 0
+    for index, _ in enumerate(y):
+        loss += -((y[index] * math.log(y_pred_prob[index])) + ((1-y[index]) * math.log(1-y_pred_prob[index])))
+    return loss/len(y)
+
 
 # Create a logistic regression model using (batch) gradient descent 
 def logistic_reg_gradient(x, y, learning_rate, iterations, m, b):
