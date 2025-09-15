@@ -29,13 +29,13 @@ def kmeans(x_train, k):
         centroids.append((x_train[index], dist)) 
 
     # Select nearest centroids
-    new_centroids = {}
+    nearest_centroids = {}
     for index, val in enumerate(centroids):
         for index2 in range(k):
             if min(val[1]) == val[1][index2]:
-                new_centroids[str(centroids[index][0])] = initial_centroids[index2]
+                nearest_centroids.setdefault(str(initial_centroids[index2][0]), []).append(str(centroids[index][0]))
     
-    print(new_centroids)
+    print(nearest_centroids)
         
     y_pred = 0 # Temp y_pred
     return y_pred
