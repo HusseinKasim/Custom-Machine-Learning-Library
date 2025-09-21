@@ -13,6 +13,7 @@ def kmeans(x_train, k):
     k: k value
     returns clusters as list(?)
     """
+
     # Initialize centroids
     initial_centroids = []
     for x in range(k):
@@ -33,9 +34,40 @@ def kmeans(x_train, k):
     for index, val in enumerate(centroids):
         for index2 in range(k):
             if min(val[1]) == val[1][index2]:
-                nearest_centroids.setdefault(str(initial_centroids[index2][0]), []).append(str(centroids[index][0]))
+                nearest_centroids.setdefault(str(initial_centroids[index2][0]), []).append(centroids[index][0])
     
     print(nearest_centroids)
+
+    # Calculate new centroid
+    x_vals = []
+    new_x = 0
+    y_vals = []
+    new_y = 0
+
+    final_centroids = []
+
+    for centroid in nearest_centroids.values():
+        for index, _ in enumerate(centroid):
+            x_val = centroid[index][0]
+            x_vals.append(x_val)
+
+            y_val = centroid[index][1]
+            y_vals.append(y_val)
+
+        for x in x_vals:
+            new_x += x
+        new_x = new_x/len(x_vals)
+
+        for y in y_vals:
+            new_y += y
+        new_y = new_y/len(y_vals)
+
+        x_vals.clear()
+        y_vals.clear()
+
+        final_centroids.append([new_x, new_y])
+    
+    print(final_centroids)
         
     y_pred = 0 # Temp y_pred
     return y_pred
