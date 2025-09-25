@@ -1,7 +1,8 @@
 import numpy as np
 import math
 
-# Test data for development
+# Example data
+'''
 x = [[1],[2],[3],[4],[5]]
 x_two_features = [[1,2],
                   [3,4],
@@ -15,6 +16,7 @@ x_three_features = [[1, 4.55,35],
                   [4,7.8, 67]
                   ]
 y = [1,0,0,1,0]
+'''
 
 # Implement (stable) Sigmoid function
 def sigmoid(z):

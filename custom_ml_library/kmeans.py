@@ -3,8 +3,10 @@ import math
 import random
 import sys
 
-# Test data for development
+# Example data
+'''
 x_train = [[1,10], [13,11], [15,12], [7,13], [9,10], [4,3], [13,5], [6,5], [8,10], [3,1], [7,12], [10,10], [9,7], [8,8], [10,12], [11, 7]]
+'''
 
 # Create a K-means clustering model
 def kmeans(x_train, k, iterations):

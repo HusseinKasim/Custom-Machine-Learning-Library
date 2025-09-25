@@ -1,6 +1,7 @@
 import numpy as np
 
-# Test data for development
+# Example data
+'''
 x = [[3],[4],[6],[8],[9]]
 x_two_features = [[1,2],
                   [3,4],
@@ -14,6 +15,7 @@ x_three_features = [[1, 4.55,35],
                   [4,7.8, 67]
                   ]
 y = [11.22, 10.65, 10.2, 12, 11]
+'''
 
 # Create a linear regression model using the Normal Equation
 def linear_reg_normal(x, y):

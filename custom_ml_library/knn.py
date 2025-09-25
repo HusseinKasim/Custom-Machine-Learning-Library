@@ -1,7 +1,8 @@
 import numpy as np
 import math
 
-# Test data for development
+# Example data
+'''
 x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
 
 y_train_regression = [10,20,30,40,50]
@@ -9,6 +10,7 @@ y_train_regression = [10,20,30,40,50]
 y_train_classification = ['b','a','c','b','d']
 
 x = [[5, 250]]
+'''
 
 # Create a k-Nearest Neighbors (KNN) model
 def knn(x_train, y_train, x, k, mode):
