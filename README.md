@@ -157,6 +157,81 @@ y = [11.22, 10.65, 10.2, 12, 11]
 
 custom_ml_library.logistic_regression.logistic_reg_gradient(x_two_features, y, 0.01, 100, [0, 0], 0)
 ```
+
+
+## K-Nearest Neighbors (KNN)
+----------------------
+KNN implementation 
+
+```
+from custom_ml_library import knn
+
+custom_ml_library.knn.knn(x_train, y_train, x, k, mode):
+```
+x_train: Python list of points of the feature (x,y)
+
+y_train: Python list of actual values (regression)/classes (classification) of target
+
+x: Python list of new point to predict
+
+k: k value
+
+mode: 'classification' or 'regression'
+
+returns value (regression) / class label (classification) of y_pred for the new point 
+
+------------------------------------------------------
+
+#### Example of implementation for regression
+
+```
+from custom_ml_library import knn
+
+x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
+y_train_regression = [10,20,30,40,50]
+x = [[5, 250]]
+
+custom_ml_library.knn.knn(x_train, y_train_regression, x, 3, 'regression')
+```
+
+#### Example of implementation for classification
+```
+from custom_ml_library import knn
+
+x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
+y_train_classification = ['b','a','c','b','d']
+x = [[5, 250]]
+
+custom_ml_library.knn.knn(x_train, y_train_classification, x, 3, 'classification')
+```
+
+
+## K-Means
+----------------------
+K-Means implementation
+
+```
+from custom_ml_library import kmeanms
+
+custom_ml_library.kmeanms.kmeanms(x_train, k, iterations)
+```
+x_train: Python list of points of the feature (x,y)
+
+k: k value
+
+iterations: Number of iterations used to update centroids
+
+returns centroids as list
+
+------------------------------------------------------
+
+#### Example of implementation
+
+```
+from custom_ml_library import kmeans
+
+x_train = [[1,10], [13,11], [15,12], [7,13], [9,10], [4,3], [13,5], [6,5], [8,10], [3,1], [7,12], [10,10], [9,7], [8,8], [10,12], [11, 7]]
+
+custom_ml_library.kmeans.kmeans(x_train, 2, 100)
+```
 ---------------------------------
-
-
