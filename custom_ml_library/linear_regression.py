@@ -1,22 +1,5 @@
 import numpy as np
 
-# Example data
-'''
-x = [[3],[4],[6],[8],[9]]
-x_two_features = [[1,2],
-                  [3,4],
-                  [5,6],
-                  [7,8],
-                  [9,10]]
-x_three_features = [[1, 4.55,35], 
-                  [1.32, 6.54,44.4], 
-                  [5.34, 8.79, 56.7], 
-                  [3.56, 10.2, 77.6], 
-                  [4,7.8, 67]
-                  ]
-y = [11.22, 10.65, 10.2, 12, 11]
-'''
-
 # Create a linear regression model using the Normal Equation
 def linear_reg_normal(x, y):
     """

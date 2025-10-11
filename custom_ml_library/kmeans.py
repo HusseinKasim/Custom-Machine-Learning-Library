@@ -3,11 +3,6 @@ import math
 import random
 import sys
 
-# Example data
-'''
-x_train = [[1,10], [13,11], [15,12], [7,13], [9,10], [4,3], [13,5], [6,5], [8,10], [3,1], [7,12], [10,10], [9,7], [8,8], [10,12], [11, 7]]
-'''
-
 # Create a K-means clustering model
 def kmeans(x_train, k, iterations):
     """
@@ -15,7 +10,7 @@ def kmeans(x_train, k, iterations):
     x_train: Python list of points of the feature (x,y)
     k: k value
     iterations: Number of iterations used to update centroids
-    returns clusters as list(?)
+    returns centroids as list
     """
 
     # Initialize centroids
@@ -77,6 +72,3 @@ def kmeans(x_train, k, iterations):
         current_iteration+=1
 
     return initial_centroids
-
-
-print(kmeans(x_train, 2, 100))

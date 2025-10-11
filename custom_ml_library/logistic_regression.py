@@ -1,23 +1,6 @@
 import numpy as np
 import math
 
-# Example data
-'''
-x = [[1],[2],[3],[4],[5]]
-x_two_features = [[1,2],
-                  [3,4],
-                  [5,6],
-                  [7,8],
-                  [9,10]]
-x_three_features = [[1, 4.55,35], 
-                  [1.32, 6.54,44.4], 
-                  [5.34, 8.79, 56.7], 
-                  [3.56, 10.2, 77.6], 
-                  [4,7.8, 67]
-                  ]
-y = [1,0,0,1,0]
-'''
-
 # Implement (stable) Sigmoid function
 def sigmoid(z):
     if z >= 0:   
@@ -31,7 +14,6 @@ def cross_entropy_loss(y, y_pred_prob):
     for index, _ in enumerate(y):
         loss += -((y[index] * math.log(y_pred_prob[index])) + ((1-y[index]) * math.log(1-y_pred_prob[index])))
     return loss/len(y)
-
 
 # Create a logistic regression model using (batch) gradient descent 
 def logistic_reg_gradient(x, y, learning_rate, iterations, m, b):

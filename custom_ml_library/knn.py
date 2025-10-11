@@ -1,17 +1,6 @@
 import numpy as np
 import math
 
-# Example data
-'''
-x_train = [[3, 100],[4, 200],[6, 300],[8, 400],[9, 500]]
-
-y_train_regression = [10,20,30,40,50]
-
-y_train_classification = ['b','a','c','b','d']
-
-x = [[5, 250]]
-'''
-
 # Create a k-Nearest Neighbors (KNN) model
 def knn(x_train, y_train, x, k, mode):
     """
@@ -86,7 +75,3 @@ def knn_regression_helper(closest_k):
     total += val[1]
   y_pred = total/len(closest_k)
   return y_pred
-
-print(knn(x_train, y_train_regression, x, 3, 'regression'))
-
-print(knn(x_train, y_train_classification, x, 3, 'classification'))
