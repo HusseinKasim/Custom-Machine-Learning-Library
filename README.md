@@ -7,7 +7,7 @@ Currently implemented:
 2. Linear Regression using Gradient Descent (single and multiple features)
 3. Logistic Regression using Gradient Descent (single and multiple features)
 4. K-Nearest Neighbors (regression and binary/multiclass classification)
-5. K-means
+5. K-Means
 
 ---------------------------------
 ## Linear Regression
